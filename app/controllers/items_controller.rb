@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
 
   def index
+    @items = Item.all
+    # @item = Item.find(params[:id])
+    # @orders = Order.where(order_id: @item.id)こんな感じか？あとで確認
   end
 
   def new
