@@ -63,7 +63,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price is out of setting range")
       end
       it '価格が9999999以上のとき' do
-        @item.price = Faker::Number.number(8)
+        @item.price = Faker::Number.between(from: 100000000)
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is out of setting range")
       end
@@ -77,7 +77,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters")
       end
-      it 'userが紐付いて以内場合' do
+      it 'userが紐付いていない場合' do
         @item.user = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("User must exist")
