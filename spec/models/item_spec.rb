@@ -48,9 +48,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '発送までの日数が選択されていないとき' do
-        @item.days_id = "1"
+        @item.sheduled_day_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days can't be blank")
+        expect(@item.errors.full_messages).to include("Sheduled day can't be blank")
       end
       it '価格の情報がない時' do
         @item.price = ""
@@ -76,6 +76,11 @@ RSpec.describe Item, type: :model do
         @item.price = "一二三四"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters")
+      end
+      it 'userが紐付いて以内場合' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end

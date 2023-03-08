@@ -6,7 +6,7 @@ FactoryBot.define do
     condition_id    {Faker::Number.between(from: 2, to: 7)}
     charge_id       {Faker::Number.between(from: 2, to: 3)}
     prefecture_id   {Faker::Number.between(from: 2, to: 48)}
-    days_id         {Faker::Number.between(from: 2, to: 4)}
+    sheduled_day_id {Faker::Number.between(from: 2, to: 4)}
     price           {Faker::Number.between(from: 300, to: 9999999)}
 
     association :user

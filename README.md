@@ -30,7 +30,7 @@
 | condition_id   | integer     | null: false                     |
 | charge_id      | integer     | null: false                     |
 | prefecture_id  | integer     | null: false                     |
-| days_id        | integer     | null: false                     |
+| sheduled_day_id| integer     | null: false                     |
 | price          | integer     | null: false                     |
 | user           | references  | null: false, foreign_key: true  |
 
@@ -44,7 +44,7 @@ extend ActiveHash::Associations::ActiveRecordExtensions
 - belongs_to :condition
 - belongs_to :charge
 - belongs_to :prefecture
-- belongs_to :days
+- belongs_to :sheduled_day
 -----------------------------------------------------------------------------------
 ## orders テーブル
 
