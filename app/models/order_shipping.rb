@@ -9,6 +9,7 @@ class OrderShipping
     validates :street_num
     validates :tel, format: {with: /\A\d{10,11}\z/, message: "is invalid. Input only number"}
     validates :user_id
+    validates :item_id
   end
 
   def save
