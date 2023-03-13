@@ -4,8 +4,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order(created_at: :DESC)
-    # @item = Item.find(params[:id])
-    # @orders = Order.where(order_id: @item.id)こんな感じか？あとで確認
   end
 
   def new
@@ -26,10 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user.id != @item.user_id
+    if current_user.id != @item.user_id || @item.order !=nil
       redirect_to action: :index
     end
-    # if ((@item.orders)!= nil) || (current_user.id != @item.user_id)
   end
 
   def update
