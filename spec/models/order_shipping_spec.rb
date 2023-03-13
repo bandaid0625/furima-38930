@@ -66,7 +66,6 @@ RSpec.describe OrderShipping, type: :model do
       it '電話番号に半角数字以外が含まれているとき' do
         @order_shipping.tel = "１２３−４５６−７８９０"
         @order_shipping.valid?
-        binding.pry
         expect(@order_shipping.errors.full_messages).to include("Tel is invalid. Input only number")
       end
       it 'userが紐付いていない時' do
