@@ -53,6 +53,22 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Tel can't be blank")
       end
+      it '電話番号が９桁以下の時' do
+        @order_shipping.tel = "12345678"
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include("Tel is invalid. Input only number")
+      end
+      it '電話番号が12桁以上の時' do
+        @order_shipping.tel = "123456789012"
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include("Tel is invalid. Input only number")
+      end
+      it '電話番号に半角数字以外が含まれているとき' do
+        @order_shipping.tel = "１２３−４５６−７８９０"
+        @order_shipping.valid?
+        binding.pry
+        expect(@order_shipping.errors.full_messages).to include("Tel is invalid. Input only number")
+      end
       it 'userが紐付いていない時' do
         @order_shipping.user_id = nil
         @order_shipping.valid?

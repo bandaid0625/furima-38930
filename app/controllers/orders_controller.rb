@@ -9,10 +9,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def new
-    @order_shipping = OrderShipping.new
-  end
-
   def create
     @order_shipping = OrderShipping.new(order_params)
     if @order_shipping.valid?
@@ -27,7 +23,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_shipping).permit(:postal_code, :prefecture_id, :city, :street_num, :building, :tel, :item_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:order_shipping).permit(:postal_code, :prefecture_id, :city, :street_num, :building, :tel).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def set_item
