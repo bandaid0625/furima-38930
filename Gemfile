@@ -60,7 +60,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development do
   gem 'rubocop', require: false
 end
-group :production do
+group :production, :staging do
   gem 'pg'
   gem 'unicorn', '5.4.1'
 end
