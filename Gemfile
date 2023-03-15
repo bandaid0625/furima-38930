@@ -76,3 +76,4 @@ gem 'active_hash'
 gem 'payjp'
 gem "aws-sdk-s3", require: false
 gem 'net-http'
+gem 'mail', '2.7.1'
